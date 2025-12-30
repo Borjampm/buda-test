@@ -22,14 +22,14 @@ class PortfolioValueResponse(BaseModel):
 async def health_check():
     return {"message": "ok"}
 
-@app.post("/portfolio-value")
+@app.post("/calculate-portfolio-value")
 async def calculate_portfolio_value(
     request: PortfolioValueRequest, 
     buda_api_service: BudaAPIService = Depends(get_buda_api_service)
     ) -> PortfolioValueResponse:
-    print(request)
-    print(request.portfolio.keys())
+
     portfolio_currencies = request.portfolio.keys()
+
     responses = await asyncio.gather(
         *[buda_api_service.get_base_currency_sale_value(
             currency, 

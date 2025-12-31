@@ -16,9 +16,20 @@ uv sync --frozen --no-dev
 uv run uvicorn src.main:app --reload
 ```
 
+## Tests
+
+```bash
+uv run pytest
+```
+
+## Docs
+
+First, run the server, and then access the docs at http://localhost:8000/docs.
+
 ## Docker
 
 ```bash
 docker build -t buda-test .
 docker run -p 8000:8000 buda-test
 ```
+

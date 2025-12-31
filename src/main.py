@@ -41,4 +41,4 @@ async def calculate_portfolio_value(
     )
 
     portfolio_value = sum([response.sale_value for response in sales_values_responses])
-    return PortfolioValueResponse(portfolio_value, fiat_currency)
+    return PortfolioValueResponse(portfolio_value=portfolio_value, fiat_currency=fiat_currency)

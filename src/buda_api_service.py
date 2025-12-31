@@ -23,5 +23,6 @@ class BudaAPIService:
                 'amount': amount
             })
         response.raise_for_status()
-        quotation = QuotationResponse(**response.json())
-        return SaleValueResponse(sale_value=quotation.quotation.quote_exchanged[0])
+        quotation_response = QuotationResponse(**response.json())
+        quotation = quotation_response.quotation
+        return SaleValueResponse(sale_value=quotation.quote_exchanged[0])
